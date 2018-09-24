@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+        <link rel="mask-icon" type="" href="img/favicon.png" />
+        <title>CodePen - Local Weather App</title>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css'>
+        <style>
+            body {
+            font-family: "Roboto", sans-serif;
+            background: #393232;
+            }
+            .text-medium {
+            font-size: 2em;
+            }
+            .text-small {
+            font-size: 1.5em;
+            }
+            .round {
+            border-radius: 20px;
+            }
+            .hide {
+            display: none;
+            }
+            .rain {
+            background: url("https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb")
+            no-repeat fixed;
+            background-size: cover;
+            }
+            .snow {
+            background: url("https://images.pexels.com/photos/5313/cold-snow-nature-forest.jpg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb")
+            no-repeat fixed;
+            background-size: cover;
+            }
+            .clear {
+            background: url("https://images.pexels.com/photos/440731/pexels-photo-440731.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb")
+            no-repeat fixed;
+            background-size: cover;
+            }
+            .cloud {
+            background: url("https://static.pexels.com/photos/216630/pexels-photo-216630.jpeg")
+            no-repeat fixed;
+            background-size: cover;
+            }
+            #location {
+            color: #546e7a;
+            }
+            #main-wrapper {
+            margin: 10px auto;
+            background: rgba(255, 255, 255, 0.7);
+            }
+        </style>
+    </head>
+    <body translate="no" >
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <div id="main-wrapper">
+            <header>
+                <h1 class="text-center">Local weather app</h1>
+                <h6 class="text-center">Allow the location to see the current weather</h2>
+            </header>
+            <div class="info-wrapper hide">
+                <div class="text-center">
+                    <span id="location" class="text-medium"></span>
+                </div>
+                <div class="text-center">
+                    <span class="text-medium"><span id="temperature"></span>&deg;<span id="unit">C</span></span>
+                </div>
+                <div class="text-center">
+                    <span class="text-small" id="weather"></span>
+                </div>
+                <div class="text-center">
+                    <img src="" id="weather-icon" alt="weather-icon" height="80px">
+                </div>
+                <div class="text-center">
+                    <button type="button" id="unit-button" class="button secondary round">Fahrenheit</button>
+                </div>
+            </div>
+        </div>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+        <script src='https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js'></script>
+        <script >
+            function getLocation() {
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            }
+            function showPosition(position) {
+            $.ajax({
+            url:
+            "https://fcc-weather-api.glitch.me/api/current?lat=" +
+            position.coords.latitude +
+            "&lon=" +
+            position.coords.longitude,
+            success: function(result) {
+            var location = result.name + " , " + result.sys.country;
+            var temperature = Math.floor(result.main.temp);
+            var weather_icon = result.weather[0].icon;
+            var weather = result.weather[0].description;
+            var weather_main = result.weather[0].main;
+            
+            $("#location").text(location);
+            $("#temperature").html(temperature);
+            $("#weather-icon").attr("src", weather_icon);
+            $("#weather").text(weather);
+            
+            $(".info-wrapper").removeClass("hide");
+            
+            switch (weather_main) {
+              case "Thunderstorm":
+              case "Drizzle":
+              case "Rain":
+                $("body").addClass("rain");
+                break;
+              case "Snow":
+                $("body").addClass("snow");
+                break;
+              case "Clear":
+                $("body").addClass("clear");
+                break;
+              case "Clouds":
+                $("body").addClass("cloud");
+                break;
+            }
+            }
+            });
+            }
+            
+            $(document).ready(function() {
+            getLocation();
+            
+            $("#unit-button").click(function() {
+            var unit = $("#unit").text();
+            var temperature = $("#temperature").text();
+            var unit_name;
+            
+            if (unit == "C") {
+            unit_name = "Celsius";
+            temperature = Math.round((temperature * 1.8 + 32) * 10) / 10;
+            unit = "F";
+            } else {
+            unit_name = "Fahrenheit";
+            temperature = Math.round((temperature - 32) / 1.8 * 10) / 10;
+            unit = "C";
+            }
+            
+            $("#unit-button").text(unit_name);
+            $("#temperature").text(temperature);
+            $("#unit").text(unit);
+            });
+            });
+        </script>
+    </body>
+</html>
