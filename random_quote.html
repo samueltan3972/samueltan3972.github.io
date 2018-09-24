@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+        <title>CodePen - random-quote-generator</title>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css'>
+        <style>
+            body {
+            background: url("https://images.pexels.com/photos/552785/pexels-photo-552785.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb");
+            background-size: cover;
+            background-attachment: fixed;
+            }
+            .semi-transparent {
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            margin-top: 10% !important;
+            }
+            .text-medium {
+            font-size: 3vh;
+            }
+            .text-large {
+            font-size: 5vh;
+            }
+        </style>
+    </head>
+    <body translate="no" >
+        <body>
+            <div class="row">
+                <div class="ui raised very padded text segment semi-transparent">
+                    <p id="quote-title" class="text-medium">
+                    <blockquote id="quote-content" class="text-large"></blockquote>
+                    </p>
+                    <div class="ui row">
+                        <button class="ui mini button" id="new-quote">New quote</button>
+                        <a target="_blank" class="twitter-share-button ui mini blue button"><i class="twitter icon"></i>Tweet</a>
+                        <button class="ui mini secondary button" id="copy-text">Copy text</button>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.js'></script>
+    <script >
+        function getQuote() {
+        $.ajax({
+        url:
+        "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+        success: function(data) {
+        var post = data.shift(); // The data is an array of posts. Grab the first one.
+        
+        $("#quote-title").text(post.title);
+        $("#quote-content").html(post.content);
+        
+        var quot =
+          "https://twitter.com/intent/tweet?hashtags=quote&related=freecodecamp&text=" +
+          encodeURI($("#quote-content").text() + post.title);
+        
+        $(".twitter-share-button").attr("href", quot);
+        },
+        cache: false
+        });
+        }
+        
+        function copyText() {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($("#quote-content").text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        }
+        
+        $(document).ready(function() {
+        getQuote();
+        
+        $("#new-quote").click(function() {
+        getQuote();
+        });
+        
+        $("#copy-text").click(function() {
+        copyText();
+        
+        $("#copy-text").attr("data-tooltip", "copied!");
+        setTimeout(function() {
+        $("#copy-text").removeAttr("data-tooltip");
+        }, 2000);
+        });
+        });
+    </script>
+    </body>
+</html>

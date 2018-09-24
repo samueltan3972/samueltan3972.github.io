@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+        <title>CodePen - Wikipedia Viewer</title>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+        <style>
+            body {
+            background: #444;
+            color: #fff;
+            }
+            .hide {
+            display: none;
+            }
+            .list-group-item {
+            background: #444;
+            color: #fff;
+            }
+        </style>
+    </head>
+    <body translate="no" >
+        <!-- This will be hide at first load -->
+        <div class="px-4 hide" id="result">
+            <form action="" class="wiki-search-form">
+                <div class="row pt-3">
+                    <div class="init-image">
+                        <a href="">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" class="pt-2" alt="Wikipedia" height="45" width="45">
+                        </a>
+                    </div>
+                    <div class="input-group col-10 col-md-7">
+                        <input type="text" class="search-query form-control" id="searchbox-result" placeholder="Search" />
+                        <span class="input-group-btn">
+                        <button class="btn btn-dark" id="search-button-result" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <hr>
+        </div>
+        <!-- This will be hide after submit search query -->
+        <div class="container" id="home">
+            <div class="text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" class="img-fluid pt-5 pb-4" alt="Wikipedia" height="250" width="250">
+            </div>
+            <div class="text-center">
+                <h2>Wikipedia Viewer</h2>
+            </div>
+            <form action="" class="wiki-search-form">
+                <div class="input-group col-md-12 pb-3">
+                    <input type="search" class="search-query form-control" id="searchbox-home" placeholder="Search" />
+                    <span class="input-group-btn">
+                    <button class="btn btn-dark" id="search-button-home" type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    </span>
+                </div>
+            </form>
+            <div class="text-center">
+                <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="btn btn-dark">I'm Feeling Lucky</a>
+            </div>
+        </div>
+        <!-- This is result list -->
+        <div class="container">
+            <div class="list-group list-group-flush" id="result-list">
+            </div>
+        </div>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/popper.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+        <script >
+            function submit(search_query) {
+            var search_url =
+            "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=" +
+            search_query;
+            
+            $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            url: search_url,
+            success: function(data) {
+            var title = data[1];
+            var description = data[2];
+            var link = data[3];
+            
+            $("#result-list").empty();
+            
+            if (title.length === 0) {
+              $("#result-list").append(
+                "<p class='py-3'>Your search - <strong>" +
+                  search_query +
+                  "</strong> - did not match any documents.</p><p class 'py-3'>Suggestion: </p><ul><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li></ul>"
+              );
+            }
+            
+            for (var i = 0; i < title.length; i++) {
+              $("#result-list").append(
+                "<a href='" +
+                  link[i] +
+                  "' target='_blank' class='list-group-item list-group-item-action flex-column align-items-start'><div class='d-flex w-100 justify-content-between'><h5 class='mb-1'>" +
+                  title[i] +
+                  "</h5></div><p class='mb-1'>" +
+                  description[i] +
+                  "</p></a>"
+              );
+            }
+            },
+            error: function(errorMessage) {
+            alert("Error retrieving search results, please reload the page");
+            }
+            });
+            }
+            
+            
+            $(document).ready(function() {
+            $("#search-button-home").on("click", function() {
+            event.preventDefault();
+            var query = $("#searchbox-home").val();
+            
+            if (!query) {
+            return false;
+            }
+            
+            $("#home").addClass("hide");
+            $("#result").removeClass("hide");
+            
+            submit(query);
+            });
+            
+            $("#search-button-result").on("click", function() {
+            event.preventDefault();
+            var query = $("#searchbox-result").val();
+            
+            if (!query) {
+            return false;
+            }
+            
+            submit(query);
+            });
+            });
+        </script>
+    </body>
+</html>
