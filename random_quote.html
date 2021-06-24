@@ -44,16 +44,16 @@
         function getQuote() {
         $.ajax({
         url:
-        "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+        "https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand",
         success: function(data) {
         var post = data.shift(); // The data is an array of posts. Grab the first one.
-        
-        $("#quote-title").text(post.title);
-        $("#quote-content").html(post.content);
+
+        $("#quote-title").text(post.title.rendered);
+        $("#quote-content").html(post.content.rendered);
         
         var quot =
           "https://twitter.com/intent/tweet?hashtags=quote&related=freecodecamp&text=" +
-          encodeURI($("#quote-content").text() + post.title);
+          encodeURI($("#quote-content").text() + post.title.rendered);
         
         $(".twitter-share-button").attr("href", quot);
         },
