@@ -84,7 +84,7 @@
     <h1>Dear Lecturer</h1>
     <p class="lead">This is the landing page for deployment of the Universiti Malaya (UM) Master of Data Science assignment, please select the subject below for more information. Thank you.</p>
     <p class="lead">
-      <a href="WQD7003-DataAnalytics.html" class="btn btn-lg btn-light fw-bold border-white bg-white">WQD7003</a>
+      <a href="WQD7003-DataAnalytics.html" class="btn btn-lg btn-light fw-bold border-white bg-white">WQD7003-DataAnalytics</a>
 	  <a href="WQD7004-ProgrammingInDataScience.html" class="btn btn-lg btn-light fw-bold border-white bg-white">WQD7004</a>
     </p>
   </main>
