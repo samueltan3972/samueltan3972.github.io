@@ -1,100 +1,248 @@
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.108.0">
-    <title>Universit Malaya Assignment Landing Page</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+  <link rel="mask-icon" type="" href="img/favicon.png" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/1.0.2/css/froala_blocks.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <style type="text/css">
+    header {
+      transition: all 0.5s;
+    }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+    .scrollTop {
+      transform: translateY(-80px);
+    }
+  </style>
+</head>
 
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
+<body>
+  <header data-block-type="headers" data-id="1" class="sticky-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-md no-gutters">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2" aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
+        <div class="col-12 col-md-7 text-center text-md-left order-lg-6">
+          <a href="index.html">
+            <img src="img/logo.png" height="30" alt="image">
+          </a>
+        </div>
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
+        <!--       <div class="collapse navbar-collapse col-12 col-md-5 order-lg-1" id="navbarNav2">
+        <ul class="navbar-nav col-5">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.froala.com">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.froala.com">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.froala.com">Team</a>
+          </li>
+        </ul>
+      </div> -->
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-  </head>
-  <body class="d-flex h-100 text-center text-bg-dark">
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">UM DS</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
-        <a class="nav-link fw-bold py-1 px-0" href="WQD7003-DataAnalytics.html">WQD7003</a>
-        <a class="nav-link fw-bold py-1 px-0" href="WQD7004-ProgrammingInDataScience.html">WQD7004</a>
+        <ul class="navbar-nav justify-content-end col-sm-5 order-lg-12 d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/samueltan3972" target="_blank"><i class="fa fa-github"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.linkedin.com/in/SamuelTanJooWoon" target="_blank"><i
+                class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
+  <section class="fdb-block pb-5" style="background-image: url(img/background.jpg); background-attachment: fixed;"
+    data-block-type="call_to_action" data-id="5">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-12 col-md-8 col-lg-6 text-center">
+          <div class="fdb-box br-0">
 
-  <main class="px-3">
-    <h1>Dear Lecturer</h1>
-    <p class="lead">This is the landing page for deployment of the Universiti Malaya (UM) Master of Data Science assignment, please select the subject below for more information. Thank you.</p>
-    <p class="lead">
-      <a href="WQD7003-DataAnalytics.html" class="btn btn-lg btn-light fw-bold border-white bg-white">WQD7003</a>
-	  <a href="WQD7004-ProgrammingInDataScience.html" class="btn btn-lg btn-light fw-bold border-white bg-white">WQD7004</a>
-    </p>
-  </main>
+            <h1>Hi, I'm Samuel</h1>
+            <p class="text-h3">
+              Last semester student that currently study at <a href="https://www.utar.edu.my"
+                target="_blank">Universiti Tunku Abdul Rahman (UTAR)</a>. Looking for a role in June 2022 where I can grow and earn from experienced team members while drawing experience from my previous projects. 
+            </p>
+            <p class="mt-4">
+              <a class="btn btn-primary" href="https://drive.google.com/file/d/1yRpViAi90XMPDnsK38WohAIIyYYooHU9/view?usp=sharing"
+                target="_blank">Hire me!</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fdb-block" data-block-type="features" data-id="7">
+    <div class="container">
+      <div class="row justify-content-center pb-5">
+        <div class="col-12 text-center">
+          <h1>My portfolio</h1>
+        </div>
+      </div>
 
-  <footer class="mt-auto text-white-50">
-    <p>Gong Xi Fa Cai! Happy New Year!</p>
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5">
+          <img alt="image" class="img-fluid" src="img/rewardslink.png">
+        </div>
+
+        <div class="col-12 col-md-5 m-md-auto">
+          <h2><strong>Rewardslink</strong></h2>
+          <p class="text-h3">Rewardslink is an e-commerce website that provides online shopping service in Asia. The
+            project has been deprecated</p>
+          <!-- <p><a href="wikipedia.html" target="_blank">Learn More &gt;</a></p> -->
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5 m-md-auto order-md-5">
+          <img alt="image" class="img-fluid" src="img/yippi-eshop.png">
+        </div>
+
+        <div class="col-12 col-md-5">
+          <h2><strong>Yippi E-shop</strong></h2>
+          <p class="text-h3">An e-commerce feature on mobile social app, Yippi (First version)</p>
+          <!--<p><a href="random_quote.html" target="_blank">Learn More &gt;</a></p>-->
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5">
+          <a href="https://github.com/samueltan3972/ResNext-Reimplementation" target="_blank"><img alt="image"
+              class="img-fluid" src="img/resnext.png"></a>
+        </div>
+
+        <div class="col-12 col-md-5 m-md-auto">
+          <h2><strong>ResNext Reimplementation (Deep Learning)</strong></h2>
+          <p class="text-h3">School assignment for Reimplementation of ResNext (Deep learning model) in PyTorch for
+            binary image classification</p>
+          <p><a href="https://github.com/samueltan3972/ResNext-Reimplementation" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5 m-md-auto order-md-5">
+          <a href="https://github.com/samueltan3972/MySejahtera-Redesign" target="_blank"><img alt="image"
+              class="img-fluid" src="img/mysejahtera-redesign.png"></a>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <h2><strong>MySejahtera Redesign</strong></h2>
+          <p class="text-h3">Redesign of MySejahtera, a Covid-19 tracing app with Flutter and Firebase</p>
+          <p><a href="https://github.com/samueltan3972/MySejahtera-Redesign" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5">
+          <a href="https://github.com/samueltan3972/pasarMalam" target="_blank"><img alt="image" class="img-fluid"
+              src="img/pasarMalam-new.png"></a>
+        </div>
+
+        <div class="col-12 col-md-5 m-md-auto">
+          <h2><strong>Pasar Malam: IT Burger</strong></h2>
+          <p class="text-h3">School project in web app to sell burger online for pasar malam owner</p>
+          <p><a href="https://github.com/samueltan3972/pasarMalam" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5 m-md-auto order-md-5">
+          <a href="https://github.com/samueltan3972/framework-review" target="_blank"><img alt="image"
+              class="img-fluid" src="img/framework-review.png"></a>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <h2><strong>Microservices Framework Review</strong></h2>
+          <p class="text-h3">Simple performance analysis of Microservices framework, compared with Spring Boot, Quarkus, Gin and Revel</p>
+          <p><a href="https://github.com/samueltan3972/framework-review" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5">
+          <a href="wikipedia.html" target="_blank"><img alt="image" class="img-fluid" src="img/wikipedia.PNG"></a>
+        </div>
+
+        <div class="col-12 col-md-5 m-md-auto">
+          <h2><strong>Wikipedia viewer</strong></h2>
+          <p class="text-h3">Wikipedia viewer use the wikipedia API to allow user to search the wikipedia page</p>
+          <p><a href="wikipedia.html" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="col-4 col-md-5 m-md-auto order-md-5">
+          <a href="random_quote.html" target="_blank"><img alt="image" class="img-fluid" src="img/random_quote.PNG"></a>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <h2><strong>Random Quote Generator</strong></h2>
+          <p class="text-h3">Generate random quote from the quotesondesign API</p>
+          <p><a href="random_quote.html" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+
+      <div class="row text-left align-items-center pt-5">
+        <div class="col-4 col-md-5">
+          <a href="weather.html" target="_blank"><img alt="image" class="img-fluid" src="img/weather.PNG"></a>
+        </div>
+
+        <div class="col-12 col-md-5 m-md-auto">
+          <h2><strong>Local Weather App</strong></h2>
+          <p class="text-h3">A simple website to tell the current local weather.</p>
+          <p><a href="weather.html" target="_blank">Learn More &gt;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="fdb-block footer-small bg-dark fp-active" data-block-type="footers" data-id="8">
+    <div class="container">
+      <div class="row text-center align-items-center">
+        <div class="col">
+          <p class="text-h5 mt-5">Landing page built by <a href="https://www.froala.com" target="_blank">Froala Building
+              Block</a></p>
+        </div>
+      </div>
+    </div>
   </footer>
-</div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
+  <script type="text/javascript">
+    var c,
+      currentScrollTop = 0,
+      navbar = $("header");
 
-    
-  </body>
+    $(window).scroll(function () {
+      var a = $(window).scrollTop();
+      var b = navbar.height();
+
+      currentScrollTop = a;
+
+      if (c < currentScrollTop && a > b) {
+        navbar.addClass("scrollTop");
+      } else if (c > currentScrollTop && !(a <= b)) {
+        navbar.removeClass("scrollTop");
+      }
+      c = currentScrollTop;
+    });
+  </script>
+
+</body>
+
 </html>
